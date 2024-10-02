@@ -1,7 +1,6 @@
 package poe.spring.domain.member.service;
 
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import poe.spring.domain.member.dto.ResponseDto;
 import poe.spring.domain.member.dto.RequestDto;
@@ -15,19 +14,17 @@ import java.util.Objects;
 public class MemberCrudService {
 
     private final MemberRepo memberRepo;
-    private final ModelMapper modelMapper;
 
     public Long createUser(RequestDto requestDto) {
         // 사용자 생성 로직
-        Member memberEntity = modelMapper.map(requestDto, Member.class);
-        return memberRepo.save(memberEntity).getId();
+        return memberRepo.save(RequestDto.toEntity(requestDto)).getId();
     }
 
     public ResponseDto readUser(Long id) {
         // 사용자 조회 로직
         Member member = memberRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Member does not exist."));
-        ResponseDto responseDto = modelMapper.map(member, ResponseDto.class);
+        ResponseDto responseDto = Member.toDto(member);
         return responseDto;
     }
 
@@ -45,7 +42,7 @@ public class MemberCrudService {
         existingMember.setPassword(Objects.isNull(requestDto.getPassword()) ?
                 existingMember.getPassword() : requestDto.getPassword());
 
-        return modelMapper.map(memberRepo.save(existingMember), ResponseDto.class);
+        return Member.toDto(memberRepo.save(existingMember));
     }
 
     public void deleteUser(Long id) {

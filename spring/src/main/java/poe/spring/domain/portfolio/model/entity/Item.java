@@ -2,6 +2,7 @@ package poe.spring.domain.portfolio.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import poe.spring.domain.portfolio.dto.SimpleItemDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,5 +31,14 @@ public class Item {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StockTransaction> transactions = new ArrayList<>();
+
+    public static SimpleItemDto toDto(Item entity) {
+        return SimpleItemDto.builder()
+                .id(entity.getId())
+                .ticker(entity.getTicker())
+                .assetClass(entity.getAssetClass())
+                .ratio(entity.getRatio())
+                .build();
+    }
 
 }
