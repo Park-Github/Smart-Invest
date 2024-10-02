@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import poe.spring.domain.member.model.entity.Member;
 import poe.spring.domain.member.model.repository.MemberRepo;
-import poe.spring.domain.portfolio.dto.UpdateResponseDto;
+import poe.spring.domain.portfolio.dto.PortfolioDto;
+import poe.spring.domain.portfolio.dto.SimplePortfolioDto;
 import poe.spring.domain.portfolio.model.entity.Portfolio;
 import poe.spring.domain.portfolio.model.repository.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,8 +24,7 @@ public class PortfolioCrudService {
     private final CashTransactionRepo cashTransactionRepo;
     private final StockTransactionRepo stockTransactionRepo;
 
-    // TODO Exception Handling 설정 및 Error Response class 추가
-    public Long create(Long memberId, String name) {
+    public SimplePortfolioDto createPortfolio(Long memberId, String name) {
         Member memberEntity = memberRepo.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("Member does not exist."));
         portfolioRepo.findByName(name)
@@ -37,37 +36,54 @@ public class PortfolioCrudService {
                         .name(name)
                         .member(memberEntity)
                         .build();
-        return portfolioRepo.save(portfolioEntity).getId();
+
+        return Portfolio.toSimpleDto(portfolioRepo.save(portfolioEntity));
     }
 
-    public List<Portfolio> read(Long memberId) {
-        List<Portfolio> portfolios = new ArrayList<>();
-        portfolios = portfolioRepo.findByMemberId(memberId);
-        return portfolios;
+    public List<SimplePortfolioDto> readPortfolios(Long memberId) {
+        Member member = readMember(memberId);
+        List<Portfolio> portfolios = member.getPortfolios();
+        List<SimplePortfolioDto> simplePortfolioDtos =
+                portfolios.stream().map(Portfolio::toSimpleDto).toList();
+        return simplePortfolioDtos;
     }
 
-    public void update(Long memberId, UpdateResponseDto updateResponseDto) {
+    public PortfolioDto readOnePortfolio(Long portfolioId) {
+        Portfolio portfolio = readPortfolio(portfolioId);
+        return Portfolio.toDto(portfolio);
+    }
+
+    public void update(Long memberId, SimplePortfolioDto simplePortfolioDto) {
 
     }
 
-    public void delete(Long memberId, Long portfolioId) {
-        exceptionHandle(memberId, portfolioId);
+    public void deletePortfolio(Long memberId, Long portfolioId) {
+        deleteException(memberId, portfolioId);
         portfolioRepo.deleteById(portfolioId);
     }
 
-    public void exceptionHandle(Long memberId, Long portfolioId) {
-
-        Optional<Member> memberEntity = memberRepo.findById(memberId);
-        Optional<Portfolio> portfolioEntity = portfolioRepo.findById(portfolioId);
-
-        if (memberEntity.isPresent() && portfolioEntity.isEmpty())
+    private Member readMember(Long id) {
+        Optional<Member> memberEntity = memberRepo.findById(id);
+        if (memberEntity.isEmpty())
             throw new IllegalArgumentException("Member does not exist.");
-        else if (memberEntity.isEmpty() && portfolioEntity.isPresent())
-            throw new IllegalArgumentException("Portfolio does not exist.");
-        else if (memberEntity.isEmpty() && portfolioEntity.isEmpty())
-            throw new IllegalArgumentException("Member and Portfolio does not exist.");
-        else if (!Objects.equals(memberEntity.get().getId(), portfolioEntity.get().getMember().getId()))
-            throw new IllegalArgumentException("It's not a member's portfolio.");
-
+        else
+            return memberEntity.get();
     }
+
+    private Portfolio readPortfolio(Long id) {
+        Optional<Portfolio> portfolioEntity = portfolioRepo.findById(id);
+        if (portfolioEntity.isEmpty())
+            throw new IllegalArgumentException("Portfolio does not exist.");
+        else
+            return portfolioEntity.get();
+    }
+
+    private void deleteException(Long memberId, Long portfolioId) {
+        Member member = readMember(memberId);
+        Portfolio portfolio = readPortfolio(portfolioId);
+        if (!Objects.equals(member.getId(), portfolio.getMember().getId()))
+            throw new IllegalArgumentException("It's not a member's portfolio.");
+    }
+
+
 }
