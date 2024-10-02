@@ -1,11 +1,10 @@
 package poe.spring.common;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -18,7 +17,7 @@ public class MapConverter<T> {
         return snakeCase;
     }
 
-    public  Map<String, Object> convertToMap(T dto) {
+    public Map<String, Object> convertToMap(T dto) {
         Map<String, Object> data = new HashMap<>();
         Field[] fields = dto.getClass().getDeclaredFields();
 
@@ -33,5 +32,12 @@ public class MapConverter<T> {
         }
         return data;
     }
+
+    public  Map<String, Object> convertListToMap(List<T> dto, String keyName) {
+        Map<String, Object> data = new HashMap<>();
+        data.put(snakeCaseConverter(keyName), dto);
+        return data;
+    }
+
 
 }

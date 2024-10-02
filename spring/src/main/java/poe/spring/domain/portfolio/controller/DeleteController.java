@@ -12,7 +12,7 @@ import poe.spring.domain.portfolio.service.PortfolioCrudService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user/{userId}/portfolio/{portfolioId}/delete")
+@RequestMapping("/user/{userId}/portfolios/{portfolioId}/delete")
 public class DeleteController {
 
     private final PortfolioCrudService crudService;
@@ -22,7 +22,7 @@ public class DeleteController {
             @PathVariable Long userId,
             @PathVariable Long portfolioId
     ) {
-        crudService.delete(userId, portfolioId);
+        crudService.deletePortfolio(userId, portfolioId);
 
         Api<Void> response = Api.<Void>builder()
                 .statusCode(String.valueOf(HttpStatus.OK.value()))

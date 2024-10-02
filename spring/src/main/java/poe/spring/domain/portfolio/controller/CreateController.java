@@ -5,30 +5,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import poe.spring.common.Api;
+import poe.spring.common.MapConverter;
+import poe.spring.domain.portfolio.dto.SimplePortfolioDto;
 import poe.spring.domain.portfolio.service.PortfolioCrudService;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user/{id}/portfolio/create")
+@RequestMapping("/user/{id}/portfolios/create")
 public class CreateController {
 
     private final PortfolioCrudService crudService;
 
     @PostMapping
-    public ResponseEntity<Api<Map<String, Long>>> create(
+    public ResponseEntity<Api<Map<String, Object>>> create(
             @PathVariable Long id,
             @RequestBody String name
     ) {
-        Long portfolioId = crudService.create(id, name);
+        SimplePortfolioDto portfolioDto = crudService.createPortfolio(id, name);
+        MapConverter<SimplePortfolioDto> mapConverter = new MapConverter<>();
 
-        Map<String, Long> data = new HashMap<>();
-        data.put("portfolio_id", portfolioId);
-
-        Api<Map<String, Long>> response = Api.<Map<String, Long>>builder()
-                .data(data)
+        Api<Map<String, Object>> response = Api.<Map<String, Object>>builder()
+                .data(mapConverter.convertToMap(portfolioDto))
                 .statusCode(String.valueOf(HttpStatus.CREATED.value()))
                 .resultMessage("Created a new portfolio successfully.")
                 .build();
