@@ -2,7 +2,7 @@ package poe.spring.domain.portfolio.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import poe.spring.domain.portfolio.dto.SimpleItemDto;
+import poe.spring.domain.portfolio.dto.StockDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Item {
+public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +32,8 @@ public class Item {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StockTransaction> transactions = new ArrayList<>();
 
-    public static SimpleItemDto toDto(Item entity) {
-        return SimpleItemDto.builder()
+    public static StockDto toDto(Stock entity) {
+        return StockDto.builder()
                 .id(entity.getId())
                 .ticker(entity.getTicker())
                 .assetClass(entity.getAssetClass())

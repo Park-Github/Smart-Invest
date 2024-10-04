@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
 @Builder
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class SimpleItemDto {
+public class StockDto {
 
     private Long id;
 
@@ -21,5 +23,7 @@ public class SimpleItemDto {
     private String assetClass;
 
     private Float ratio;
+
+    private List<StockTransactionDto> transactions;
 
 }
