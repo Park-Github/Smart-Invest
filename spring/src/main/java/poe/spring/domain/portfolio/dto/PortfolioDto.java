@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import java.util.List;
 
+// TODO DTO를 하나로 통일시키기, JPA 양방향 Create Read Update Delete 생각하기
 @Getter
 @Setter
 @ToString
@@ -20,8 +21,8 @@ public class PortfolioDto {
 
     private String name;
 
-    private List<SimpleItemDto> items;
+    private List<StockDto> items;
 
-    private List<SimpleCashDto> cashes;
+    private List<CashDto> cashes;
 
 }

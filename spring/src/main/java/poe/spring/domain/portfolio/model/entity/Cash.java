@@ -2,7 +2,7 @@ package poe.spring.domain.portfolio.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import poe.spring.domain.portfolio.dto.SimpleCashDto;
+import poe.spring.domain.portfolio.dto.CashDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,8 @@ public class Cash {
     @OneToMany(mappedBy = "cash", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CashTransaction> transactions = new ArrayList<>();
 
-    public static SimpleCashDto toDto(Cash entity) {
-        return SimpleCashDto.builder()
+    public static CashDto toDto(Cash entity) {
+        return CashDto.builder()
                 .id(entity.getId())
                 .currencyCode(entity.getCurrencyCode())
                 .build();
