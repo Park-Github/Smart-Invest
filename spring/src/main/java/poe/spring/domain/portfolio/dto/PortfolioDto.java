@@ -9,7 +9,6 @@ import lombok.ToString;
 
 import java.util.List;
 
-// TODO DTO를 하나로 통일시키기, JPA 양방향 Create Read Update Delete 생각하기
 @Getter
 @Setter
 @ToString

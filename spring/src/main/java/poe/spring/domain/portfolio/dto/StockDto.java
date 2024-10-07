@@ -24,6 +24,4 @@ public class StockDto {
 
     private Float ratio;
 
-    private List<StockTransactionDto> transactions;
-
 }

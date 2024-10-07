@@ -21,6 +21,4 @@ public class CashDto {
 
     private String currencyCode;
 
-    private List<CashTransaction> transactions;
-
 }
