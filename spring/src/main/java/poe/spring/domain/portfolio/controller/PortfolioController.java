@@ -18,13 +18,13 @@ import java.util.Map;
 public class PortfolioController {
 
     private final PortfolioCrudService crudService;
+    private final MapConverter<PortfolioDto> mapConverter;
 
     @PostMapping
     public ResponseEntity<Api<Map<String, Object>>> create(
             @RequestBody Long userId, String name
     ) {
         PortfolioDto portfolioDto = crudService.createPortfolio(userId, name);
-        MapConverter<PortfolioDto> mapConverter = new MapConverter<>();
 
         Api<Map<String, Object>> response = Api.<Map<String, Object>>builder()
                 .data(mapConverter.convertToMap(portfolioDto))
@@ -41,7 +41,6 @@ public class PortfolioController {
             @RequestBody Long userId
     ) {
         List<PortfolioDto> dtos = crudService.readPortfolios(userId);
-        MapConverter<PortfolioDto> mapConverter = new MapConverter<>();
 
         Api<Map<String, Object>> response = Api.<Map<String, Object>>builder()
                 .data(mapConverter.convertListToMap(dtos, "portfolioList"))
@@ -71,23 +70,17 @@ public class PortfolioController {
     }
 
     @PatchMapping("/{portfolioId}")
-    public void updatePortfolio(
-            @PathVariable Long portfolioId
+    public ResponseEntity<Api<Map<String, Object>>> updatePortfolio(
+            @PathVariable Long portfolioId,
+            @RequestBody String name
     ) {
 
-    }
-
-    @GetMapping("/{portfolioId}/stocks")
-    public ResponseEntity<Api<Map<String, Object>>> readStocks(
-            @PathVariable Long portfolioId
-    ) {
-        PortfolioDto dto = crudService.readOnePortfolio(portfolioId);
-        MapConverter<PortfolioDto> mapConverter = new MapConverter<>();
+        PortfolioDto dto = crudService.update(portfolioId, name);
 
         Api<Map<String, Object>> response = Api.<Map<String, Object>>builder()
                 .data(mapConverter.convertToMap(dto))
-                .statusCode(String.valueOf(HttpStatus.OK))
-                .resultMessage("Read a portfolio successfully.")
+                .statusCode(String.valueOf(HttpStatus.OK.value()))
+                .resultMessage("Read all portfolios successfully.")
                 .build();
 
         return ResponseEntity

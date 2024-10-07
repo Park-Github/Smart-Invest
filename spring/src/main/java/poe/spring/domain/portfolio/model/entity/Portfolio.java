@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import poe.spring.domain.member.model.entity.Member;
 import poe.spring.domain.portfolio.dto.PortfolioDto;
-import poe.spring.domain.portfolio.dto.SimpleCashDto;
-import poe.spring.domain.portfolio.dto.SimpleItemDto;
-import poe.spring.domain.portfolio.dto.SimplePortfolioDto;
+import poe.spring.domain.portfolio.dto.CashDto;
+import poe.spring.domain.portfolio.dto.StockDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,26 +26,26 @@ public class Portfolio {
     private Member member;
 
     @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Item> items = new ArrayList<>();
+    private List<Stock> stocks;
 
     @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Cash> cashes = new ArrayList<>();
+    private List<Cash> cashes;
 
     public static PortfolioDto toDto(Portfolio portfolio) {
-        List<SimpleCashDto> cashDtos =
+        List<CashDto> cashDtos =
                 portfolio.getCashes().stream().map(Cash::toDto).toList();
-        List<SimpleItemDto> itemDtos =
-                portfolio.getItems().stream().map(Item::toDto).toList();
+        List<StockDto> stockDtos =
+                portfolio.getStocks().stream().map(Stock::toDto).toList();
         return PortfolioDto.builder()
                 .id(portfolio.getId())
                 .name(portfolio.getName())
                 .cashes(cashDtos)
-                .items(itemDtos)
+                .items(stockDtos)
                 .build();
     }
 
-    public static SimplePortfolioDto toSimpleDto(Portfolio portfolio) {
-        return SimplePortfolioDto.builder()
+    public static PortfolioDto toSimpleDto(Portfolio portfolio) {
+        return PortfolioDto.builder()
                 .id(portfolio.getId())
                 .name(portfolio.getName())
                 .build();
