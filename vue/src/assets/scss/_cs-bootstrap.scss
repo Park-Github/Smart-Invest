@@ -1,0 +1,72 @@
+:root {
+  --bs-btn-font-size: var(--font-size);
+  --bs-btn-font-weight: 500;
+}
+
+// ---------------------------------------------------------
+// @Dropdown
+// ---------------------------------------------------------
+
+.dropdown-toggle {
+  &.no-after::after {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------
+// @Button
+// ---------------------------------------------------------
+
+.btn {
+  &-sm {
+    font-size: calc(var(--font-size) * 0.85);
+  }
+  &-lg {
+    font-size: calc(var(--font-size) * 1.125);
+  }
+}
+
+// .btn {
+//   &-primary.disabled,
+//   &-primary:disabled {
+//     color: #b4b6bc;
+//     background-color: #e9ecee;
+//     border-color: #e9ecee;
+//   }
+// }
+
+
+// ---------------------------------------------------------
+// @Form
+// ---------------------------------------------------------
+
+.form-label,
+.form-check-label {
+    font-size: var(--font-size);
+    color: var(--body-color);
+}
+
+.form-control {
+  // --bs-border-color: #d4d8e2;
+
+  &-sm {
+    font-size: calc(var(--font-size) * 0.85);
+  }
+  &-lg {
+    font-size: calc(var(--font-size) * 1.125);
+  }
+
+  &::placeholder {
+    color: #b4b6bc;
+  }
+
+  &:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+  }
+
+  &:read-only {
+    --bs-body-color: #748194;
+    --bs-body-bg: #f5f5f5;
+  }
+}

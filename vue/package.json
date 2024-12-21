@@ -19,10 +19,9 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "brand-colors": "^2.1.1",
-    "perfect-scrollbar": "^1.5.5",
+    "material-symbols": "^0.23.0",
     "pinia": "^2.1.7",
-    "skycons": "^1.0.0",
+    "pretendard": "^1.3.9",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

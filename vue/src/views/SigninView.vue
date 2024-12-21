@@ -1,51 +1,31 @@
 <script setup lang="ts"></script>
 
 <template>
-    <div class="sign-container">
-        <div class="sign-bg">
-            <div class="sign-logo">
-                <img
-                    class="img-fluid"
-                    src="@/assets/static/images/logo-ga.svg"
-                    alt=""
-                />
-            </div>
-        </div>
-        <div class="sign-form">
-            <h2 class="sign-title">
-                Smart Invest 에 오신 것을
-                <br />
-                환영합니다!
+    <div class="container-fluid sign-container">
+        <form class="form sign-form">
+            <h2 class="form-header">
+                Smart Invest 에 오신 것을<br /> 환영합니다!
             </h2>
-            <form>
-                <!-- <div class="input-effect">
-                    <input type="text" required />
-                    <label>이메일</label>
-                    <span class="focus-border"></span>
-                </div>
-                <div class="input-effect">
-                    <input type="text" required />
-                    <label>비밀번호</label>
-                    <span class="focus-border"></span>
-                </div> -->
+
+            <div class="form-body">
                 <div class="mb-3">
-                    <label class="text-normal text-dark form-label">
+                    <label class="form-label required">
                         이메일
                     </label>
                     <input
                         type="email"
-                        class="form-control"
+                        class="form-control form-control-lg"
                         placeholder="이메일을 입력하세요."
                         required
                     />
                 </div>
                 <div class="mb-3">
-                    <label class="text-normal text-dark form-label">
+                    <label class="form-label required">
                         비밀번호
                     </label>
                     <input
                         type="password"
-                        class="form-control"
+                        class="form-control form-control-lg"
                         placeholder="비밀번호를 입력하세요."
                         required
                     />
@@ -61,254 +41,170 @@
                         로그인 정보 저장
                     </label>
                 </div>
-                <button type="button" class="btn btn-black btn-icon">
+                <button type="button" class="btn btn-primary w-100 mb-5">
                     로그인
                 </button>
-                <div class="row">
+                
+                <div class="row row-cols-xl-2 g-2 mb-5">
                     <div class="col">
-                        <button type="button" class="btn">아이디 찾기</button>
+                        <button
+                            type="button"
+                            class="btn btn-sns btn-kakao"
+                            onclick="location.href='/oauth2/authorization/kakao'"
+                        >
+                            <img src="@/assets/img/kakao.png" alt="Kakao">
+                            카카오로 계속하기
+                        </button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn">비밀번호 찾기</button>
+                        <button
+                            type="button"
+                            class="btn btn-sns btn-naver"
+                            onclick="location.href='/oauth2/authorization/naver'"
+                        >
+                            <img src="@/assets/img/naver.png" alt="Naver" />
+                            네이버로 계속하기
+                        </button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn">회원가입</button>
+                        <button
+                            type="button"
+                            class="btn btn-sns btn-apple"
+                            onclick="location.href='/oauth2/authorization/apple'"
+                        >
+                            <img src="@/assets/img/apple.png" alt="Apple" />
+                            Apple로 계속하기
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button
+                            type="button"
+                            class="btn btn-sns btn-google"
+                            onclick="location.href='/oauth2/authorization/google'"
+                        >
+                            <img src="@/assets/img/google.png" alt="Google" />
+                            Google로 계속하기
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                <hr />
-                <button
-                    type="button"
-                    class="btn btn-kakao btn-icon"
-                    onclick="location.href='/oauth2/authorization/kakao'"
-                >
-                    카카오로 계속하기
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-naver btn-icon"
-                    onclick="location.href='/oauth2/authorization/naver'"
-                >
-                    네이버로 계속하기
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-apple btn-icon"
-                    onclick="location.href='/oauth2/authorization/apple'"
-                >
-                    Apple로 계속하기
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-google btn-icon"
-                    onclick="location.href='/oauth2/authorization/google'"
-                >
-                    Google로 계속하기
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-black btn-icon"
-                    onclick="location.href='/auth/login'"
-                >
-                    기존 ID(이메일)로 계속하기
-                </button>
-                <!-- <div class="">
-                    <div class="peers ai-c jc-sb fxw-nw">
-                        <div class="peer">
-                            <div
-                                class="checkbox checkbox-circle checkbox-info peers ai-c"
-                            >
-                                <input
-                                    type="checkbox"
-                                    id="inputCall1"
-                                    name="inputCheckboxesCall"
-                                    class="peer"
-                                />
-                                <label
-                                    for="inputCall1"
-                                    class="peers peer-greed js-sb ai-c form-label"
-                                >
-                                    <span class="peer peer-greed">
-                                        자동 로그인
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="peer">
-                            <button class="btn btn-primary btn-color">
-                                로그인
-                            </button>
-                        </div>
-                    </div>
-                </div> -->
-            </form>
-        </div>
+            <div class="form-footer">
+                <button type="button" class="btn-link">아이디 찾기</button>
+                <span class="vr align-self-center"></span>
+                <button type="button" class="btn-link">비밀번호 찾기</button>
+                <span class="vr align-self-center"></span>
+                <RouterLink to="/signup" type="button" class="btn-link">회원가입</RouterLink>
+            </div>
+        </form>
     </div>
 </template>
 
 <style scoped lang="scss">
 .sign-container {
     display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-}
-.sign-title {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 4rem;
-}
-.sign-bg {
-    flex: 1 1 auto;
-    position: relative;
-    height: 100%;
-    background: url(@/assets/static/images/1703078901251.jpeg) no-repeat center
-        center;
-    background-size: cover;
-}
-.sign-logo {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    width: 120px;
-    height: 120px;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 15px;
-}
-.sign-form {
-    flex: 0 0 auto;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    min-width: 320px;
-    overflow-y: auto;
-    padding: 80px 40px;
-    background-color: #fff;
-
-    @media (min-width: 768px) {
-        width: 33.33333333%;
+    min-height: 0;
+    background-color: #d5d5d5;
+    // background-color: #21D4FD;
+	// background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    @include media-breakpoint-down(md) {
+        padding: 0;
     }
 }
-.required,
-input:required {
-    content: "*";
-    color: #f0295a;
+
+.sign-form {
+    overflow: hidden;
+    max-width: 500px;
+    border-radius: 1rem;
+    background-color: #fff;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all .32s ease-in;
+
+    .form-header {
+        padding: 4rem 4rem 1rem;
+        font-size: 2.1rem;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+    }
+
+    .form-body {
+        overflow-y: auto;
+        padding: 2rem 4rem;
+    }
+
+    .form-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 1rem 4rem 2rem;
+    }
+
+    @include media-breakpoint-down(md) {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+        .form-footer {
+            gap: 0.5rem;
+        }
+    }
 }
+
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.6rem;
-    white-space: nowrap;
-    font-size: 1.5rem;
+    &-link {
+        border: 0;
+        background-color: transparent;
+        text-decoration: none;
+        color: #71747c;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    &-sns {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 0.5rem;
+        white-space: nowrap;
+        width: 100%;
+        font-size: 0.875rem;
+        font-weight: 600;
+
+        img {
+            max-width: 100%;
+            height: 18px;
+        }
+    }
+
+    &-kakao {
+        color: #232433;
+        border-color: #fee500;
+        background-color: #fee500;
+    }
+
+    &-naver {
+        color: #fff;
+        border: 1px solid #03c75a;
+        background-color: #03c75a;
+    }
+
+    &-google,
+    &-apple {
+        color: #232433;
+        border-color: #d4d8e2;
+        background-color: #fff;
+    }
 }
-
-// .input-effect {
-//     position: relative;
-//     margin: 40px 0 20px;
-
-//     label {
-//         display: inline-block;
-//         max-width: 100%;
-//         // margin-bottom: 5px;
-//         font-weight: 700;
-
-//         position: absolute;
-//         color: #aaa;
-//         left: 0;
-//         // font-size: 20px;
-//         bottom: 8px;
-//         transition: all 0.2s;
-//     }
-//     input {
-//         font:
-//             15px / 24px "Pretendard Variable",
-//             Pretendard,
-//             "Lato",
-//             Arial,
-//             sans-serif;
-//         color: #333;
-//         width: 100%;
-//         box-sizing: border-box;
-//         letter-spacing: 1px;
-//         border: 0;
-//         padding: 4px 0;
-//         border-bottom: 1px solid #ccc;
-//         background-color: transparent;
-
-//         &:focus {
-//             outline: none;
-//         }
-//     }
-
-//     .focus-border {
-//         display: block;
-//         position: absolute;
-//         bottom: 0;
-//         left: 0;
-//         background-color: #666;
-//         width: 0;
-//         height: 2px;
-//         border-radius: 2px;
-//         transition: 0.5s;
-//     }
-
-//     input:focus ~ label,
-//     input:valid ~ label {
-//         bottom: 30px;
-//         color: #666;
-//         // font-weight: bold;
-//     }
-
-//     input:focus ~ .focus-border,
-//     input:valid ~ .focus-border {
-//         width: 100%;
-//     }
-
-//     // input ~ .focus-border {
-//     //     position: absolute;
-//     //     bottom: 0;
-//     //     left: 0;
-//     //     width: 0;
-//     //     height: 2px;
-//     //     background-color: #42a6f5;
-//     //     transition: 0.4s;
-//     // }
-
-//     // input ~ .focus-border {
-//     //     position: absolute;
-//     //     bottom: 0;
-//     //     left: 0;
-//     //     width: 0;
-//     //     height: 2px;
-//     //     background-color: #42a6f5;
-//     //     transition: 0.4s;
-//     // }
-//     // input:focus ~ .focus-border,
-//     // input.has-content ~ .focus-border {
-//     //     width: 100%;
-//     //     transition: 0.4s;
-//     // }
-//     // input ~ label {
-//     //     position: absolute;
-//     //     left: 0;
-//     //     width: 100%;
-//     //     top: 9px;
-//     //     color: #aaa;
-//     //     transition: 0.3s;
-//     //     z-index: -1;
-//     //     letter-spacing: 0.5px;
-//     // }
-//     // input:focus ~ label,
-//     // input.has-content ~ label {
-//     //     top: -16px;
-//     //     font-size: 12px;
-//     //     color: #42a6f5;
-//     //     transition: 0.3s;
-//     // }
-// }
 </style>

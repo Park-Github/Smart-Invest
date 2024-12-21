@@ -1,0 +1,93 @@
+// ---------------------------------------------------------
+// @Font Size
+// ---------------------------------------------------------
+
+.fs-xs   { font-size: 0.75rem !important; }
+.fs-sm   { font-size: 0.813rem !important; }
+.fs-md   { font-size: 0.938rem !important; }
+.fs-lg   { font-size: 1rem !important; }
+.fs-xl   { font-size: 1.125rem !important; }
+.fs-body  { font-size: var(--font-size) !important; }
+
+// ---------------------------------------------------------
+// @Font Weight
+// ---------------------------------------------------------
+
+.fw-100 { font-weight: 100 !important; }
+.fw-200 { font-weight: 200 !important; }
+.fw-300 { font-weight: 300 !important; }
+.fw-400 { font-weight: 400 !important; }
+.fw-500 { font-weight: 500 !important; }
+.fw-600 { font-weight: 600 !important; }
+.fw-700 { font-weight: 700 !important; }
+.fw-800 { font-weight: 800 !important; }
+.fw-900 { font-weight: 900 !important; }
+
+// ---------------------------------------------------------
+// @Utils
+// ---------------------------------------------------------
+
+.layers {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.peers {
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.peer {
+  display: block;
+  height: auto;
+  flex: 0 0 auto;
+
+  > img {
+    max-width: none;
+  }
+  
+}
+
+.peer-greed {
+  flex: 1 1 auto;
+
+  > img {
+    max-width: 100%;
+  }
+
+  > .peer,
+  > .peers {
+    flex: 1 1 auto;
+  }
+}
+
+.required {
+  &:after {
+    content: '*';
+    color: #f0295a;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  > &-header,
+  > &-footer,
+  > &-body {
+    padding: 1rem;
+  }
+
+  > &-body {
+    flex: 1 1 auto;
+  }
+}
