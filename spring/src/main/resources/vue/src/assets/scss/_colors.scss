@@ -1,0 +1,150 @@
+@import 'material-colors';
+
+// ---------------------------------------------------------
+// @Greyscale Colors
+// ---------------------------------------------------------
+
+// Colors below are ordered from lightest to darkest
+
+$grey-100             : #f9fafb;
+$grey-200             : #f2f3f5;
+$grey-300             : #e6eaf0;
+$grey-400             : #d3d9e3;
+$grey-500             : #b9c2d0;
+$grey-600             : #7c8695;
+$grey-700             : #72777a;
+$grey-800             : #565a5c;
+$grey-900             : #313435;
+
+$grey-colors-alt: (
+  grey-100 : #f9fafb,
+  grey-200 : #f2f3f5,
+  grey-300 : #e6eaf0,
+  grey-400 : #d3d9e3,
+  grey-500 : #b9c2d0,
+  grey-600 : #7c8695,
+  grey-700 : #72777a,
+  grey-800 : #565a5c,
+  grey-900 : #313435,
+);
+
+// ---------------------------------------------------------
+// @Bootstrap Color System
+// ---------------------------------------------------------
+
+// $blue   : $md-blue-500;
+// $indigo : $md-indigo-500;
+// $purple : $md-purple-500;
+// $pink   : $md-pink-500;
+// $red    : $md-red-500;
+// $orange : $md-orange-500;
+// $yellow : $md-yellow-500;
+// $green  : $md-green-500;
+// $teal   : $md-teal-500;
+// $cyan   : $md-cyan-500;
+
+// ---------------------------------------------------------
+// @Themes
+// ---------------------------------------------------------
+
+$primary: #0F3758;
+$secondary: #4E5D6C;
+$secondary-bg: #e9ecee;
+$teriary: #F28C54;
+$quaternary: #5DADE2;
+
+$success: #3e8d63;
+$info: $quaternary;
+$warning: #b8c924;
+$danger: #9C0D38; // d62518;
+$light: #f5f5f5; // f8f9fa;
+$dark: #4E5D6C; // 343a40;
+
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  secondary-bg: $secondary-bg,
+  quaternary: $quaternary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+);
+
+$body-bg: #FFFFFF;
+$body-color: #000000;
+$border-color: #d4d8e2; // rgba(0, 0, 0, 0.0625);
+
+
+// ---------------------------------------------------------
+// @Default Colors
+// ---------------------------------------------------------
+
+// $default-danger       : #ff3c7e;
+// $default-dark         : #313435;
+// $default-grey         : #565a5c;
+// $default-info         : #0f9aee;
+// $default-primary      : #7774e7;
+// $default-success      : #37c936;
+// $default-text-color   : #72777a;
+// $default-warning      : #fc0;
+// $default-white        : #fff;
+
+// ---------------------------------------------------------
+// @Inverted Colors
+// ---------------------------------------------------------
+
+// $inverse-danger       : lighten($default-danger, 35%);
+// $inverse-info         : lighten($default-info, 45%);
+// $inverse-primary      : lighten($default-primary, 30%);
+// $inverse-success      : lighten($default-success, 45%);
+// $inverse-warning      : lighten($default-warning, 45%);
+
+// ---------------------------------------------------------
+// @Others
+// ---------------------------------------------------------
+
+// $border-color         : #e6ecf5;
+// $collapsed-size       : 70px;
+// $header-height        : 65px;
+// $offscreen-size       : 280px;
+// $side-nav-dark        : #313644;
+// $side-nav-dark-border : rgba(120, 130, 140, 0.3);
+// $side-nav-dark-font   : #99abb4;
+
+// ---------------------------------------------------------
+// @Header Themes
+// ---------------------------------------------------------
+
+// $theme-danger         : #f53f61;
+// $theme-dark           : lighten($side-nav-dark, 10%);
+// $theme-info           : $default-info;
+// $theme-primary        : $default-primary;
+// $theme-success        : desaturate($default-success, 5%);
+
+
+// ---------------------------------------------------------
+// @Grey Colors
+// ---------------------------------------------------------
+
+@each $item, $color in $grey-colors-alt {
+  .c-#{"" + $item},     .cH-#{"" + $item}:hover      { color: $color !important; }
+  .bgc-#{"" + $item},   .bgcH-#{"" + $item}:hover    { background-color: $color !important; }
+  .bdc-#{"" + $item},   .bdcH-#{"" + $item}:hover    { border-color: $color !important; }
+  .fill-#{"" + $item},  .fillH-#{"" + $item}:hover   { fill: $color !important; }
+  .str-#{"" + $item},   .strH-#{"" + $item}:hover    { stroke: $color !important; }
+}
+
+// ---------------------------------------------------------
+// @Material Color
+// ---------------------------------------------------------
+
+@each $item, $color in $md-colors {
+  .c-#{"" + $item},     .cH-#{"" + $item}:hover      { color: $color !important; }
+  .bgc-#{"" + $item},   .bgcH-#{"" + $item}:hover    { background-color: $color !important; }
+  .bdc-#{"" + $item},   .bdcH-#{"" + $item}:hover    { border-color: $color !important; }
+  .fill-#{"" + $item},  .fillH-#{"" + $item}:hover   { fill: $color !important; }
+  .str-#{"" + $item},   .strH-#{"" + $item}:hover    { stroke: $color !important; }
+}

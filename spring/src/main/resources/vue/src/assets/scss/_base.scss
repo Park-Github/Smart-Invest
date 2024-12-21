@@ -1,0 +1,110 @@
+:root {
+    --primary-color      : $primary; // 9c0d38 ce5374 dbbbf5 ddf0ff
+    --secondary-color    : $secondary;
+    --tertiary-color     : $thertiary;
+    --quaternary-color   : $quaternary;
+
+    --success-color      : $success;
+    --danger-color       : $danger;
+    --info-color         : $info;
+    --warning-color      : $warning;
+    --light-color        : $light;
+    --dark-color         : $dark;
+    --muted-color        : #72777a;
+
+    // --heading-color:  $body-color;
+    --body-color: $body-color;
+    --border-color: $border-color;
+
+    --font-primary: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    --font-size: 0.875rem;
+
+    --collapsed-size: 70px;
+    --header-height: 65px;
+    --offscreen-size: 280px;
+
+    --side-nav-dark        : #313644;
+    --side-nav-dark-border : rgba(120, 130, 140, 0.3);
+    --side-nav-dark-font   : #99abb4;
+
+    --section-gap: 120px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+}
+
+:focus {
+    outline: none;
+}
+
+html, body, a {
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: hsl(var(--text-color), 10%);
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+hr {
+    border-top: 1px solid var(--border-color);
+}
+
+ul {
+    margin-bottom: 0;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #b4b6bc;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #b4b6bc;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {
+    color: transparent;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    font-family: var(--font-primary);
+    // font-size: 14px;
+    color: var(--body-color);
+    transition: color 0.5s, background-color 0.5s;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// material-symbols 아이콘 굵기 조정
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24
+}
