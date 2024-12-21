@@ -44,7 +44,8 @@ public class PortfolioCrudService {
 
     public PortfolioDto update(Long portfolioId, String name) {
         Portfolio existingPortfolio = readPortfolio(portfolioId);
-        Portfolio updatedPortfolio = portfolioRepo.updateById(existingPortfolio.getId());
+        existingPortfolio.setName(name);
+        Portfolio updatedPortfolio = portfolioRepo.save(existingPortfolio);
         return Portfolio.toSimpleDto(updatedPortfolio);
     }
 

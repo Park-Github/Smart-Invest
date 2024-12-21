@@ -15,7 +15,18 @@ import poe.spring.domain.portfolio.service.PortfolioCrudService;
 public class CrudExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Api<Void>> memberExceptionHandle(Exception e) {
+    public ResponseEntity<Api<Void>> IllegalExceptionHandle(Exception e) {
+        log.error(e.getMessage());
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(Api.<Void>builder()
+                        .statusCode(String.valueOf(HttpStatus.CONFLICT.value()))
+                        .resultMessage(e.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<Api<Void>> NullExceptionHandle(Exception e) {
         log.error(e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)

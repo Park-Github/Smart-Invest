@@ -29,8 +29,8 @@ public class Stock {
     @JoinColumn(name = "portfolio_id")
     private Portfolio portfolio;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<StockTransaction> transactions = new ArrayList<>();
+    @OneToMany(mappedBy = "stock", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StockTransaction> transactions;
 
     public static StockDto toDto(Stock entity) {
         return StockDto.builder()

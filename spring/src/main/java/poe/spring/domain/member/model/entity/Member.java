@@ -30,10 +30,10 @@ public class Member {
     private SnsMember snsMember;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Alert> alerts = new ArrayList<>();
+    private List<Alert> alert;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Portfolio> portfolios = new ArrayList<>();
+    private List<Portfolio> portfolios;
 
     public static ResponseDto toDto(Member entity) {
         return ResponseDto.builder()

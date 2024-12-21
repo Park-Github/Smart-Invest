@@ -6,5 +6,5 @@ import poe.spring.domain.portfolio.model.entity.StockTransaction;
 import java.util.List;
 
 public interface StockTransactionRepo extends JpaRepository<StockTransaction, Long> {
-    List<StockTransaction> findByPortfolioId(Long portfolioId);
+    List<StockTransaction> findByStockId(Long portfolioId);
 }

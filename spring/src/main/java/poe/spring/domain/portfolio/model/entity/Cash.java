@@ -26,7 +26,7 @@ public class Cash {
     private Portfolio portfolio;
 
     @OneToMany(mappedBy = "cash", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CashTransaction> transactions = new ArrayList<>();
+    private List<CashTransaction> transactions;
 
     public static CashDto toDto(Cash entity) {
         return CashDto.builder()

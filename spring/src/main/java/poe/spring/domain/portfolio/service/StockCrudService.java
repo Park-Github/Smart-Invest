@@ -17,11 +17,11 @@ public class StockCrudService {
     private final StockRepo stockRepo;
     private final PortfolioRepo portfolioRepo;
 
-    public StockDto createStock(Long portfolioId, StockDto requestDto) {
-
-        Portfolio portfolio = portfolioRepo.findById(portfolioId)
-                .orElseThrow(() -> new NullPointerException("Portfolio does not exist."));
-    }
+//    public StockDto createStock(Long portfolioId, StockDto requestDto) {
+//
+//        Portfolio portfolio = portfolioRepo.findById(portfolioId)
+//                .orElseThrow(() -> new NullPointerException("Portfolio does not exist."));
+//    }
 
     public List<StockDto> readStocks(Long portfolioId) {
         List<Stock> stockList = stockRepo.findByPortfolioId(portfolioId);

@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public interface PortfolioRepo extends JpaRepository<Portfolio, Long> {
     Optional<Portfolio> findByName(String name);
-    Portfolio updateById(Long id);
 }

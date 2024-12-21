@@ -37,15 +37,15 @@ public class StockController {
                 .body(response);
     }
 
-    public ResponseEntity<Api<Map<String, Object>>> createStock(
-            @PathVariable Long portfolioId,
-            @RequestBody StockDto requestDto
-    ){
-        StockDto dto = crudService.createStock(portfolioId, requestDto);
-
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(response);
-    }
+//    public ResponseEntity<Api<Map<String, Object>>> createStock(
+//            @PathVariable Long portfolioId,
+//            @RequestBody StockDto requestDto
+//    ){
+//        StockDto dto = crudService.createStock(portfolioId, requestDto);
+//
+//        return ResponseEntity
+//                .status(HttpStatus.OK)
+//                .body(response);
+//    }
 
 }

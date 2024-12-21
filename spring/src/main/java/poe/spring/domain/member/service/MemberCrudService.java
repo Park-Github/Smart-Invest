@@ -42,7 +42,7 @@ public class MemberCrudService {
         existingMember.setPassword(Objects.isNull(requestDto.getPassword()) ?
                 existingMember.getPassword() : requestDto.getPassword());
 
-        return Member.toDto(memberRepo.updateById(existingMember.getId()));
+        return Member.toDto(memberRepo.save(existingMember));
     }
 
     public void deleteUser(Long id) {
