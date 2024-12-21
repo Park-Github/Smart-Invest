@@ -17,13 +17,19 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "brand-colors": "^2.1.1",
+    "perfect-scrollbar": "^1.5.5",
     "pinia": "^2.1.7",
+    "skycons": "^1.0.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
+    "@types/bootstrap": "^5.2.10",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^20.14.5",
     "@vitejs/plugin-vue": "^5.0.5",
@@ -36,6 +42,7 @@
     "jsdom": "^24.1.0",
     "npm-run-all2": "^6.2.0",
     "prettier": "^3.2.5",
+    "sass": "1.77.6",
     "typescript": "~5.4.0",
     "vite": "^5.3.1",
     "vitest": "^1.6.0",

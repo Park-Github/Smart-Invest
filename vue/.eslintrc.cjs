@@ -7,34 +7,30 @@ module.exports = {
         "plugin:vue/vue3-essential",
         "eslint:recommended",
         "@vue/eslint-config-typescript",
-        "@vue/eslint-config-prettier/skip-formatting"
+        "@vue/eslint-config-prettier/skip-formatting",
     ],
     parserOptions: {
-        ecmaVersion: "latest"
+        ecmaVersion: "latest",
     },
     rules: {
-        // "prettier/prettier": [
-        //     "warn",
-        //     {
-        //         semi: true,
-        //         tabWidth: 4,
-        //         quoteProps: "consistent",
-        //         trailingComma: "es5",
-        //     },
-        // ],
+        "prettier/prettier": [
+            "warn",
+            {
+                semi: true,
+                tabWidth: 4,
+                endOfLine: "auto",
+                quoteProps: "consistent",
+                trailingComma: "es5",
+                htmlWhitespaceSensitivity: "ignore",
+            },
+        ],
         "indent": ["warn", 4],
+        "vue/html-self-closing": "off",
         "vue/multi-word-component-names": "off",
         "vue/new-line-between-multi-line-property": "off",
         "vue/multiline-ternary": "off",
         "vue/max-lines-per-block": "off",
-        "vue/max-attributes-per-line": [
-            "warn",
-            {
-                "singleline": {
-                    "max": 3
-                }
-            }
-        ],
+        "vue/max-attributes-per-line": "off",
         "vue/no-empty-component-block": "warn",
         "vue/no-unused-vars": "warn",
         "vue/no-unused-components": "warn",
@@ -42,6 +38,5 @@ module.exports = {
         "vue/no-useless-template-attributes": "warn",
         "vue/multiline-html-element-content-newline": "warn",
         "vue/html-closing-bracket-newline": "warn",
-        "vue/html-self-closing": "warn"
-    }
+    },
 };
